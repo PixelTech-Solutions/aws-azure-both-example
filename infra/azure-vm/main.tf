@@ -124,14 +124,10 @@ resource "azurerm_linux_virtual_machine" "this" {
   location                        = local.rg_location
   size                            = var.vm_size
   admin_username                  = var.admin_username
+  admin_password                  = var.admin_password
   network_interface_ids           = [azurerm_network_interface.this.id]
-  disable_password_authentication = true
+  disable_password_authentication = false
   tags                            = local.common_tags
-
-  admin_ssh_key {
-    username   = var.admin_username
-    public_key = var.admin_ssh_public_key
-  }
 
   os_disk {
     caching              = "ReadWrite"
