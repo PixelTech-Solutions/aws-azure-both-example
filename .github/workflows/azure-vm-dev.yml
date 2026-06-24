@@ -1,0 +1,23 @@
+name: "Deploy Azure VM - Dev"
+
+on:
+  push:
+    branches: [main]
+    paths: ["infra/azure-vm/**"]
+  pull_request:
+    paths: ["infra/azure-vm/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dev:
+    uses: PixelTech-Solutions/Terraform/.github/workflows/terraform.yml@main
+    with:
+      working_directory: ./infra/azure-vm
+      environment: dev
+      project_name: incident-commander
+      service_name: azure-vm
+    secrets: inherit
