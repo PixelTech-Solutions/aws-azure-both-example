@@ -38,3 +38,9 @@ variable "allowed_ssh_cidrs" {
   description = "CIDR blocks allowed SSH access"
   default     = []
 }
+
+variable "availability_zone" {
+  type        = string
+  description = "AWS availability zone (must support the chosen instance type)"
+  default     = "us-east-1a"
+}
